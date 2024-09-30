@@ -9,20 +9,25 @@ namespace e_commerce_backend.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [MinLength(3)]
+        [MaxLength(255)]
         public string Street { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [MinLength(3)]
+        [MaxLength(60)]
         public string City { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [MinLength(3)]
+        [MaxLength(60)]
         public string ZipCode { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [MinLength(3)]
+        [MaxLength(60)]
         public string Country { get; set; }
+
 
         [ForeignKey("User")]
         public string UserEmail { get; set; } 
