@@ -8,6 +8,7 @@ namespace e_commerce_backend.Services.AuthService
         Task RegisterUserAsync(RegisterDto registerDto);
         Task<AuthenticationResponseDto> LoginAsync(LoginDto loginDto);
         string GenerateAccessToken(User user);
-        string GenerateRefreshToken();
+        string GenerateRefreshToken(User user);
+        Task<string> RefreshAccessTokenAsync(string refreshToken);
     }
 }

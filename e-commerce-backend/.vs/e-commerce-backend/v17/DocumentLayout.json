@@ -11,8 +11,8 @@
       "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAC0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-02T18:46:50.772Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -32,22 +45,9 @@
               "RelativeDocumentMoniker": "Services\\AuthService\\AuthService.cs",
               "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Services\\AuthService\\AuthService.cs",
               "RelativeToolTip": "Services\\AuthService\\AuthService.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAAAEQAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T19:08:18.091Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-30T19:06:40.717Z",
+              "WhenOpened": "2024-10-02T18:21:45.49Z",
               "EditorCaption": ""
             },
             {
@@ -58,9 +58,9 @@
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
               "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAuwBQAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwCMAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T18:52:20.245Z",
+              "WhenOpened": "2024-10-02T18:19:47.843Z",
               "EditorCaption": ""
             }
           ]
