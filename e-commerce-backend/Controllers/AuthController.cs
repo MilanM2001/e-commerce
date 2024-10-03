@@ -20,15 +20,35 @@ namespace e_commerce_backend.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDto registerDto)
         {
-            await _authService.RegisterUserAsync(registerDto);
-            return Ok("User Registered");
+            try
+            {
+                await _authService.RegisterUserAsync(registerDto);
+
+                return Ok("User Registered");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
-            var result = await _authService.LoginAsync(loginDto);
-            return Ok(result);
+            try
+            {
+                var result = await _authService.LoginAsync(loginDto);
+
+                return Ok(result);
+            }
+            catch (InvalidDataException)
+            {
+                return NotFound("Invalid credentials");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // This method only allows access to users with the role "User"
@@ -39,24 +59,21 @@ namespace e_commerce_backend.Controllers
             return Ok("Hello, User!");
         }
 
-        // Refresh token endpoint
         [HttpPost("refresh-token")]
         public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenDto refreshTokenDto)
         {
             try
             {
-                // Call the AuthService to validate the refresh token and generate a new access token
                 var newAccessToken = await _authService.RefreshAccessTokenAsync(refreshTokenDto.RefreshToken);
                 return Ok(new { AccessToken = newAccessToken });
             }
             catch (SecurityTokenException ex)
             {
-                // Handle invalid refresh token
                 return Unauthorized(new { message = "Invalid refresh token", details = ex.Message });
             } 
             catch (Exception ex)
             {
-                return BadRequest(new { message = "something went wrong", details = ex.Message });
+                return BadRequest(new { message = "Something went wrong", details = ex.Message });
             }
         }
 

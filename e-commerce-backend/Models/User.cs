@@ -19,7 +19,7 @@ namespace e_commerce_backend.Models
         public string Name { get; set; }
 
         [Required]
-        public string PasswordHash { get; set; }
+        public string Password { get; set; }
 
         [Required]
         [Column(TypeName = "varchar(20)")]

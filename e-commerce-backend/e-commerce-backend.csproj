@@ -23,7 +23,6 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Models\DTOs\ProductDto\" />
-    <Folder Include="Models\DTOs\UserDto\" />
   </ItemGroup>
 
 </Project>
