@@ -1,0 +1,9 @@
+.navbar {
+    background-color: #1976d2;
+}
+
+.container {
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+}
