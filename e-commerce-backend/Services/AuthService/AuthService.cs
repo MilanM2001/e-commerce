@@ -7,6 +7,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using e_commerce_backend.Models.DTOs.UserDto;
+using e_commerce_backend.Exceptions;
 
 namespace e_commerce_backend.Services.AuthService
 {
@@ -16,13 +18,16 @@ namespace e_commerce_backend.Services.AuthService
         private readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
         private readonly JwtSecurityTokenHandler _tokenHandler = new JwtSecurityTokenHandler();
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AuthService(IUserRepository userRepository, IMapper mapper, IConfiguration configuration, JwtSecurityTokenHandler tokenHandler)
+        public AuthService(IUserRepository userRepository, IMapper mapper,
+            IConfiguration configuration, JwtSecurityTokenHandler tokenHandler, IHttpContextAccessor httpContextAccessor)
         {
             _userRepository = userRepository;
             _mapper = mapper;
             _configuration = configuration;
             _tokenHandler = tokenHandler;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task RegisterUserAsync(RegisterDto registerDto)
@@ -147,6 +152,29 @@ namespace e_commerce_backend.Services.AuthService
             {
                 throw new SecurityTokenException("Invalid refresh token", ex);
             }
+        }
+
+        public async Task<UserResponseDto> GetMe()
+        {
+            var email = "";
+            if (_httpContextAccessor.HttpContext != null)
+            {
+                email = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                Console.WriteLine(email);
+            }
+
+            if (string.IsNullOrEmpty(email))
+                throw new SecurityTokenException("Token invalid");
+                
+
+            var user = await _userRepository.GetByEmailAsync(email);
+
+            if (user == null)
+                throw new EntityNotFoundException("User not found");
+
+            var userResponse = _mapper.Map<UserResponseDto>(user);
+
+            return userResponse;
         }
 
 

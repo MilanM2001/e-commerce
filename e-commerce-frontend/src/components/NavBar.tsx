@@ -1,20 +1,42 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
-import styles from '../styles/Navbar.module.css'
+import { Link, useNavigate } from 'react-router-dom';
+import '../css/NavBar.css';
+import { AppRoute } from '../routes/RoutesEnum';
+import { useLogout } from '../hooks/AuthHooks';
+import { useAuth } from '../services/AuthContext';
 
 const Navbar: React.FC = () => {
+    const navigate = useNavigate();
+    const { logoutHandler } = useLogout();
+    const { role, isAuthenticated } = useAuth();
+
+    const handleLogout = async () => {
+        await logoutHandler();
+        navigate(AppRoute.LOGIN);
+    };
+
     return (
-        <AppBar position="static" className={styles.navbar}>
-            <Toolbar>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    My E-Commerce
-                </Typography>
-                <Button color="inherit" component={Link} to="/">Home</Button>
-                <Button color="inherit" component={Link} to="/login">Login</Button>
-                <Button color="inherit" component={Link} to="/register">Register</Button>
-            </Toolbar>
-        </AppBar>
+        <nav className="navbar">
+            <div className="navbar-brand">
+                <Link to="/">E-Commerce</Link>
+            </div>
+            <div className="navbar-links">
+                {!isAuthenticated ? (
+                    <>
+                        <Link to={AppRoute.LOGIN}>Login</Link>
+                        <Link to={AppRoute.REGISTER}>Register</Link>
+                    </>
+                ) : (
+                    <>
+                        <Link to={AppRoute.MY_ACCOUNT}>My Account</Link>
+                        {role === 'admin' && (
+                            <Link to={AppRoute.CREATE_PRODUCT}>Create Product</Link>
+                        )}
+                        <Link to="/" onClick={handleLogout}>Logout</Link>
+                    </>
+                )}
+            </div>
+        </nav>
     );
 };
 

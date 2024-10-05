@@ -1,71 +1,84 @@
-import React, { useState } from 'react';
-import { Button, Typography, Box, Container } from '@mui/material';
-import '../css/LoginPage.css';
+import React from 'react';
+import { Button, Typography, Box, Container, CircularProgress } from '@mui/material';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 import InputField from '../components/InputField';
+import { useLogin } from '../hooks/AuthHooks';
+import '../css/LoginPage.css';
+
+// Validation schema using Yup
+const validationSchema = Yup.object().shape({
+    email: Yup.string()
+        .email('Invalid email format')
+        .required('Email is required')
+        .min(5, 'Email should be at least 5 characters')
+        .max(50, 'Email should be less than 50 characters'),
+    password: Yup.string()
+        .required('Password is required')
+        .min(3, 'Password should be at least 3 characters')
+        .max(20, 'Password should be less than 20 characters'),
+});
 
 const LoginPage: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [emailError, setEmailError] = useState('');
-    const [passwordError, setPasswordError] = useState('');
+    const { loginHandler, loading, errorMessage } = useLogin(); 
 
-    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
-        if (event.target.value.length < 5 || event.target.value.length > 50) {
-            setEmailError('Email should be between 5 and 50 characters');
-        } else {
-            setEmailError('');
-        }
-    };
+    
+    const handleSubmit = async (values: any) => {
+        const loginData = {
+            email: values.email,
+            password: values.password,
+        };
 
-    const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(event.target.value);
-        if (event.target.value.length < 8 || event.target.value.length > 20) {
-            setPasswordError('Password should be between 8 and 20 characters');
-        } else {
-            setPasswordError('');
-        }
-    };
-
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        if (!email || !password) {
-            if (!email) setEmailError('Email is required');
-            if (!password) setPasswordError('Password is required');
-            return;
-        }
-        console.log('Email:', email);
-        console.log('Password:', password);
+        await loginHandler(loginData);
     };
 
     return (
         <Container maxWidth="sm" className="login-container">
             <Box className="login-box">
                 <Typography variant="h4" className="login-title">Login</Typography>
-                <form onSubmit={handleSubmit} className="login-form">
-                    <InputField
-                        label="Email"
-                        value={email}
-                        onChange={handleEmailChange}
-                        error={emailError}
-                    />
-                    <InputField
-                        label="Password"
-                        value={password}
-                        onChange={handlePasswordChange}
-                        error={passwordError}
-                        type="password"
-                    />
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        fullWidth
-                        className="login-button"
-                    >
-                        Login
-                    </Button>
-                </form>
+                <Formik
+                    initialValues={{
+                        email: '',
+                        password: '',
+                    }}
+                    validationSchema={validationSchema}
+                    onSubmit={handleSubmit}
+                >
+                    {({ errors, touched, handleChange, handleBlur, values }) => (
+                        <Form className="login-form">
+                            <InputField
+                                name="email"
+                                label="Email"
+                                value={values.email}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.email && errors.email ? errors.email : ''}
+                            />
+                            <InputField
+                                name="password"
+                                label="Password"
+                                type="password"
+                                value={values.password}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.password && errors.password ? errors.password : ''}
+                            />
+                            
+                            {errorMessage && <Typography color="error">{errorMessage}</Typography>}
+                            
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                fullWidth
+                                className="login-button"
+                                disabled={loading}
+                            >
+                                {loading ? <CircularProgress size={24} color="inherit" /> : 'Login'}
+                            </Button>
+                        </Form>
+                    )}
+                </Formik>
             </Box>
         </Container>
     );

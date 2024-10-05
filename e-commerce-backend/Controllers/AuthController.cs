@@ -1,8 +1,11 @@
-﻿using e_commerce_backend.Models.DTOs.AuthDto;
+﻿using e_commerce_backend.Exceptions;
+using e_commerce_backend.Models.DTOs.AuthDto;
+using e_commerce_backend.Models.DTOs.UserDto;
 using e_commerce_backend.Services.AuthService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace e_commerce_backend.Controllers
 {
@@ -59,7 +62,7 @@ namespace e_commerce_backend.Controllers
             return Ok("Hello, User!");
         }
 
-        [HttpPost("refresh-token")]
+        [HttpPost("refreshToken")]
         public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenDto refreshTokenDto)
         {
             try
@@ -76,6 +79,31 @@ namespace e_commerce_backend.Controllers
                 return BadRequest(new { message = "Something went wrong", details = ex.Message });
             }
         }
+
+        [HttpGet("getMe")]
+        [Authorize(Roles = "User, Admin")]
+        public async Task<IActionResult> GetMe()
+        {
+            try
+            {
+                var userResponse = await _authService.GetMe();
+
+                return Ok(userResponse);
+            }
+            catch (SecurityTokenException ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
     }
 }

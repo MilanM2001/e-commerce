@@ -1,72 +1,133 @@
-import React, { useState } from 'react';
-import { TextField, Button, Typography, Container } from '@mui/material';
-import styles from '../styles/RegisterPage.module.css';
+import React from 'react';
+import { Button, Typography, Box, Container, CircularProgress } from '@mui/material';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import InputField from '../components/InputField';
+import { useRegister } from '../hooks/AuthHooks';
+import '../css/RegisterPage.css';
+
+const validationSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email format').required('Email is required').min(5, 'Email should be at least 5 characters').max(50, 'Email should be less than 50 characters'),
+    password: Yup.string().required('Password is required').min(8, 'Password should be at least 8 characters').max(20, 'Password should be less than 20 characters'),
+    name: Yup.string().required('Name is required'),
+    street: Yup.string().required('Street is required'),
+    city: Yup.string().required('City is required'),
+    zipCode: Yup.string().required('Zip Code is required'),
+    country: Yup.string().required('Country is required'),
+});
 
 const RegisterPage: React.FC = () => {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-        name: '',
-        street: '',
-        city: '',
-        zipcode: '',
-        country: ''
-    });
-    const [errors, setErrors] = useState({ email: '', password: '', name: '', address: '' });
+    const { registerHandler, loading, errorMessage } = useRegister();
 
-    const validateFields = () => {
-        const newErrors = { email: '', password: '', name: '', address: '' };
-        if (!formData.email) newErrors.email = 'Email is required';
-        if (!formData.password) newErrors.password = 'Password is required';
-        if (!formData.name) newErrors.name = 'Name is required';
-        if (!formData.street || !formData.city || !formData.zipcode || !formData.country) {
-            newErrors.address = 'Complete address is required';
-        }
-        setErrors(newErrors);
-        return !newErrors.email && !newErrors.password && !newErrors.name && !newErrors.address;
-    };
+    const handleSubmit = async (values: any) => {
+        const registerData = {
+            email: values.email,
+            password: values.password,
+            name: values.name,
+            address: {
+                street: values.street,
+                city: values.city,
+                zipCode: values.zipCode,
+                country: values.country,
+            },
+        };
 
-    const handleSubmit = () => {
-        if (validateFields()) {
-            // Perform registration logic
-        }
+        await registerHandler(registerData);
     };
 
     return (
-        <Container className={styles.container}>
-            <Typography variant="h4">Register</Typography>
-            <TextField
-                label="Email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                fullWidth
-                margin="normal"
-                error={!!errors.email}
-                helperText={errors.email}
-            />
-            <TextField
-                label="Password"
-                type="password"
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                fullWidth
-                margin="normal"
-                error={!!errors.password}
-                helperText={errors.password}
-            />
-            <TextField
-                label="Name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                fullWidth
-                margin="normal"
-                error={!!errors.name}
-                helperText={errors.name}
-            />
-            {/* Additional fields for street, city, zipcode, country */}
-            <Button variant="contained" color="primary" onClick={handleSubmit}>
-                Register
-            </Button>
+        <Container maxWidth="sm" className="register-container">
+            <Box className="register-box">
+                <Typography variant="h4" className="register-title">Register</Typography>
+                <Formik
+                    initialValues={{
+                        email: '',
+                        password: '',
+                        name: '',
+                        street: '',
+                        city: '',
+                        zipCode: '',
+                        country: '',
+                    }}
+                    validationSchema={validationSchema}
+                    onSubmit={handleSubmit}
+                >
+                    {({ errors, touched, handleChange, handleBlur, values }) => (
+                        <Form className="register-form">
+                            <InputField
+                                name="email"
+                                label="Email"
+                                value={values.email}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.email && errors.email ? errors.email : ''}
+                            />
+                            <InputField
+                                name="password"
+                                label="Password"
+                                type="password"
+                                value={values.password}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.password && errors.password ? errors.password : ''}
+                            />
+                            <InputField
+                                name="name"
+                                label="Name"
+                                value={values.name}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.name && errors.name ? errors.name : ''}
+                            />
+                            <InputField
+                                name="street"
+                                label="Street"
+                                value={values.street}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.street && errors.street ? errors.street : ''}
+                            />
+                            <InputField
+                                name="city"
+                                label="City"
+                                value={values.city}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.city && errors.city ? errors.city : ''}
+                            />
+                            <InputField
+                                name="zipCode"
+                                label="Zip Code"
+                                value={values.zipCode}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.zipCode && errors.zipCode ? errors.zipCode : ''}
+                            />
+                            <InputField
+                                name="country"
+                                label="Country"
+                                value={values.country}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.country && errors.country ? errors.country : ''}
+                            />
+                            {errorMessage && <Typography color="error">{errorMessage}</Typography>}
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                fullWidth
+                                className="register-button"
+                                disabled={loading}
+                            >
+                                {loading ? <CircularProgress size={24} color="inherit" /> : 'Register'}
+                            </Button>
+                        </Form>
+
+
+                    )}
+                </Formik>
+            </Box>
         </Container>
     );
 };

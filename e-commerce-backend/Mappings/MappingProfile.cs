@@ -4,6 +4,7 @@ using e_commerce_backend.Models.DTOs.AuthDto;
 using e_commerce_backend.Models;
 using e_commerce_backend.Models.Enums;
 using e_commerce_backend.Models.DTOs.UserDto;
+using e_commerce_backend.Models.DTOs.ProductDto;
 
 namespace e_commerce_backend.Mappings
 {
@@ -16,7 +17,12 @@ namespace e_commerce_backend.Mappings
             CreateMap<User, UserResponseDto>();
                 //.ForMember(dest => dest.Cart, opt => opt.MapFrom(src => src.Cart));
             CreateMap<RegisterDto, User>();
-                
+
+
+            // Product Mapping
+            CreateMap<Product, ProductResponseDto>();
+            CreateMap<ProductRequestDto, Product>();
+
 
             // Address Mapping
             CreateMap<AddressRequestDto, Address>(); 

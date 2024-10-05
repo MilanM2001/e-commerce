@@ -2,16 +2,16 @@ import './App.css'
 import { BrowserRouter } from 'react-router-dom'
 import Navbar from './components/NavBar'
 import AppRoutes from './routes/AppRoutes'
-import { MantineProvider } from '@mantine/core'
+import { AuthProvider } from './services/AuthContext'
 
 function App() {
   return (
-    <MantineProvider>
-      <BrowserRouter>
-        <Navbar />
-        <AppRoutes />
-      </BrowserRouter>
-    </MantineProvider>
+    <AuthProvider>
+        <BrowserRouter>
+          <Navbar />
+          <AppRoutes />
+        </BrowserRouter>
+    </AuthProvider>
   )
 }
 
