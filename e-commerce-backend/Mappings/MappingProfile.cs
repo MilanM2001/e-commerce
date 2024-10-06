@@ -22,6 +22,7 @@ namespace e_commerce_backend.Mappings
             // Product Mapping
             CreateMap<Product, ProductResponseDto>();
             CreateMap<ProductRequestDto, Product>();
+            CreateMap<ProductUpdateDto, Product>();
 
 
             // Address Mapping

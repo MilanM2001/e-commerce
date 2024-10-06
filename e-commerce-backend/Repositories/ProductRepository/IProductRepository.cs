@@ -7,6 +7,8 @@ namespace e_commerce_backend.Repositories.ProductRepository
         Task<List<Product>> GetAll();
         Task<Product> GetById(int id);
         Task AddProduct(Product product);
+        Task UpdateProduct(Product product);
+        Task DeleteProduct(int id);
         Task SaveChanges();
     }
 }

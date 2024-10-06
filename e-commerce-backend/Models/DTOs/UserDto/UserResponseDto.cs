@@ -10,7 +10,7 @@ namespace e_commerce_backend.Models.DTOs.UserDto
 
         public string Name { get; set; }
 
-        public Role Role { get; set; }
+        public string Role { get; set; }
 
         public ICollection<Order> Orders { get; set; } = new List<Order>();
 

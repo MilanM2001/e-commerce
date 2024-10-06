@@ -68,6 +68,7 @@ namespace e_commerce_backend.Controllers
             try
             {
                 var newAccessToken = await _authService.RefreshAccessTokenAsync(refreshTokenDto.RefreshToken);
+                Console.WriteLine("REFRESH TOKEN ENDPOINT HIT");
                 return Ok(new { AccessToken = newAccessToken });
             }
             catch (SecurityTokenException ex)
@@ -86,7 +87,7 @@ namespace e_commerce_backend.Controllers
         {
             try
             {
-                var userResponse = await _authService.GetMe();
+                UserResponseDto userResponse = await _authService.GetMe();
 
                 return Ok(userResponse);
             }

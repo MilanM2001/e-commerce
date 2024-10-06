@@ -20,7 +20,7 @@ const refreshToken = async () => {
             refreshToken: storedRefreshToken
         }
 
-        const response = await api.post('/auth/refresh', tokenData);
+        const response = await api.post('/Auth/refreshToken', tokenData);
         return response.data;
     } catch (error) {
         console.error("Refresh token error:", error);

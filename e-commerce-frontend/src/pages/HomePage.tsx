@@ -1,9 +1,11 @@
 import { Typography, Card, CardContent, CardMedia, CircularProgress, Grid, TextField, Box } from '@mui/material';
 import { useGetAllProducts } from '../hooks/ProductHooks';
 import '../css/HomePage.css';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
     const { books, loading, error } = useGetAllProducts();
+    const navigate = useNavigate();
 
     if (loading) {
         return <CircularProgress />;
@@ -12,6 +14,10 @@ const HomePage = () => {
     if (error) {
         return <Typography color="error">Error fetching products</Typography>;
     }
+
+    const handleProductClick = (id: number) => {
+        navigate(`/product/${id}`);
+    };
 
     return (
         <div className='main'>
@@ -34,9 +40,17 @@ const HomePage = () => {
                                     height="200"
                                     image="https://cdn.pixabay.com/photo/2013/07/13/09/46/basketball-155997_1280.png"
                                     alt={product.name}
+                                    onClick={() => handleProductClick(product.id)} // Handle image click
+                                    style={{ cursor: 'pointer' }} // Cursor style for image
                                 />
                                 <CardContent>
-                                    <Typography variant="h6">{product.name}</Typography>
+                                    <Typography
+                                        variant="h6"
+                                        onClick={() => handleProductClick(product.id)} // Handle title click
+                                        style={{ cursor: 'pointer' }} // Cursor style for title
+                                    >
+                                        {product.name}
+                                    </Typography>
                                     <Typography variant="body2" color="text.secondary">
                                         {product.description}
                                     </Typography>

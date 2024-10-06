@@ -28,6 +28,26 @@ namespace e_commerce_backend.Repositories.ProductRepository
             await _context.Products.AddAsync(product);
         }
 
+        public async Task UpdateProduct(Product product)
+        {
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteProduct(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product != null)
+            {
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new ArgumentException("Product not found");
+            }
+        }
+
         public async Task SaveChanges()
         {
             await _context.SaveChangesAsync();

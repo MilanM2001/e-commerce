@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Typography, Box, Container, CircularProgress } from '@mui/material';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
@@ -19,7 +18,7 @@ const validationSchema = Yup.object().shape({
         .max(20, 'Password should be less than 20 characters'),
 });
 
-const LoginPage: React.FC = () => {
+const LoginPage = () => {
     const { loginHandler, loading, errorMessage } = useLogin(); 
 
     

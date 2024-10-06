@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ProductRequest, ProductResponse } from "../model/product"
-import { createProduct, getAllProducts } from "../services/ProductService"
+import { createProduct, getAllProducts, getProductById } from "../services/ProductService"
 import { AppRoute } from "../routes/RoutesEnum"
 
 const useGetAllProducts = () => {
@@ -28,6 +28,34 @@ const useGetAllProducts = () => {
     return { books, loading, error }
 }
 
+const useGetProductById = (id: number) => {
+    const [book, setProduct] = useState<ProductResponse | null>(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const getProductByIdHandler = async () => {
+            try {
+                setLoading(true);
+                setError(null);
+                const response = await getProductById(id)
+                setProduct(response);
+            } catch (error: any) {
+                setError(error);
+                console.error("Error in finding book by ISBN:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (id) {
+            getProductByIdHandler();
+        }
+    }, [id]);
+
+    return { book, loading, error };
+};
+
 const useCreateProduct = () => {
     const [loading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -52,4 +80,4 @@ const useCreateProduct = () => {
     return { createProductHandler, loading, error, errorMessage }
 }
 
-export { useGetAllProducts, useCreateProduct }
+export { useGetAllProducts, useGetProductById, useCreateProduct }

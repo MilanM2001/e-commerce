@@ -1,5 +1,6 @@
 ﻿using e_commerce_backend.Models.DTOs.ProductDto;
 using e_commerce_backend.Services.ProductService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace e_commerce_backend.Controllers
@@ -46,6 +47,7 @@ namespace e_commerce_backend.Controllers
         }
 
         [HttpPost("create")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateProduct([FromBody] ProductRequestDto productDto)
         {
             try
@@ -53,6 +55,36 @@ namespace e_commerce_backend.Controllers
                 await _productService.CreateProduct(productDto);
 
                 return Ok(productDto);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductUpdateDto productUpdateDto)
+        {
+            try
+            {
+                await _productService.UpdateProduct(id, productUpdateDto);
+                return Ok("Product updated successfully");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            try
+            {
+                await _productService.DeleteProduct(id);
+                return Ok("Product deleted successfully");
             }
             catch (Exception ex)
             {

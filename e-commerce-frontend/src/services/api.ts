@@ -1,4 +1,5 @@
 import axios from "axios";
+import { refreshToken } from "./AuthService";
 
 const api = axios.create({
     baseURL: "https://localhost:7099/api",
@@ -8,7 +9,6 @@ const api = axios.create({
     },
 });
 
-// Interceptor to attach the access token to every request
 api.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('accessToken');
@@ -20,44 +20,39 @@ api.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
-// Interceptor to handle 401 responses and automatically refresh the token
-// api.interceptors.response.use(
-//   (response) => response,
-//   async (error) => {
-//     const originalRequest = error.config;
+api.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+        const originalRequest = error.config;
 
-//     // If response status is 401 (Unauthorized) and it's not already retried
-//     if (error.response?.status === 401 && !originalRequest._retry) {
-//       originalRequest._retry = true;
+        if (error.response?.status === 401 && !originalRequest._retry) {
+            originalRequest._retry = true;
 
-//       try {
-//         const newAccessToken = await refreshTokenHandler(); // Call the refresh function
+            try {
+                const newAccessToken = await refreshTokenHandler(); 
 
-//         // Update the original request with the new token and retry it
-//         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-//         return api(originalRequest); // Retry the request with the new token
-//       } catch (err) {
-//         // If refreshing the token fails, reject the promise
-//         return Promise.reject(err);
-//       }
-//     }
+                originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+                return api(originalRequest); 
+            } catch (err) {
+                return Promise.reject(err);
+            }
+        }
 
-//     return Promise.reject(error); // If the response is not 401, reject the promise
-//   }
-// );
+        return Promise.reject(error);
+    }
+);
 
-// const refreshTokenHandler = async () => {
-//   try {
-//     const data = await refreshToken();
-//     const newAccessToken = data.accessToken;
+const refreshTokenHandler = async () => {
+    try {
+        const data = await refreshToken();
+        const newAccessToken = data.accessToken;
 
-//     // Update localStorage with the new access token
-//     localStorage.setItem('accessToken', newAccessToken);
-//     return newAccessToken;
-//   } catch (error) {
-//     console.error("Refresh token error:", error);
-//     throw error;
-//   }
-// };
+        localStorage.setItem('accessToken', newAccessToken);
+        return newAccessToken;
+    } catch (error) {
+        console.error("Refresh token error:", error);
+        throw error;
+    }
+};
 
 export default api;

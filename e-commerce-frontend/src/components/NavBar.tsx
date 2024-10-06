@@ -1,11 +1,10 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/NavBar.css';
 import { AppRoute } from '../routes/RoutesEnum';
 import { useLogout } from '../hooks/AuthHooks';
 import { useAuth } from '../services/AuthContext';
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
     const navigate = useNavigate();
     const { logoutHandler } = useLogout();
     const { role, isAuthenticated } = useAuth();
@@ -28,10 +27,10 @@ const Navbar: React.FC = () => {
                     </>
                 ) : (
                     <>
-                        <Link to={AppRoute.MY_ACCOUNT}>My Account</Link>
-                        {role === 'admin' && (
+                        {role === 'Admin' && (
                             <Link to={AppRoute.CREATE_PRODUCT}>Create Product</Link>
                         )}
+                        <Link to={AppRoute.MY_ACCOUNT}>My Account</Link>
                         <Link to="/" onClick={handleLogout}>Logout</Link>
                     </>
                 )}

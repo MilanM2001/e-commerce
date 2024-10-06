@@ -7,6 +7,8 @@ namespace e_commerce_backend.Services.ProductService
         Task<List<ProductResponseDto>> GetAll();
         Task<ProductResponseDto> GetById(int id);
         Task CreateProduct(ProductRequestDto product);
-        
+        Task UpdateProduct(int id, ProductUpdateDto productUpdateDto);
+        Task DeleteProduct(int id);
+
     }
 }

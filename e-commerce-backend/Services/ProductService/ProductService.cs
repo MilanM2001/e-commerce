@@ -42,5 +42,21 @@ namespace e_commerce_backend.Services.ProductService
             await _productRepository.AddProduct(product);
             await _productRepository.SaveChanges();
         }
+
+        public async Task UpdateProduct(int id, ProductUpdateDto productUpdateDto)
+        {
+            Product existingProduct = await _productRepository.GetById(id);
+            if (existingProduct == null)
+                throw new ArgumentException("Product not found");
+            
+            var updatedProduct = _mapper.Map(productUpdateDto, existingProduct);
+
+            await _productRepository.UpdateProduct(updatedProduct);
+        }
+
+        public async Task DeleteProduct(int id)
+        {
+            await _productRepository.DeleteProduct(id);
+        }
     }
 }

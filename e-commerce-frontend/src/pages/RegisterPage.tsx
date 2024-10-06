@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Typography, Box, Container, CircularProgress } from '@mui/material';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
@@ -16,7 +15,7 @@ const validationSchema = Yup.object().shape({
     country: Yup.string().required('Country is required'),
 });
 
-const RegisterPage: React.FC = () => {
+const RegisterPage = () => {
     const { registerHandler, loading, errorMessage } = useRegister();
 
     const handleSubmit = async (values: any) => {
