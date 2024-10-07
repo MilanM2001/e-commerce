@@ -1,6 +1,7 @@
 ﻿using e_commerce_backend.Models.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using e_commerce_backend.Models.DTOs.AddressDto;
 
 namespace e_commerce_backend.Models.DTOs.UserDto
 {
@@ -12,10 +13,6 @@ namespace e_commerce_backend.Models.DTOs.UserDto
 
         public string Role { get; set; }
 
-        public ICollection<Order> Orders { get; set; } = new List<Order>();
-
-        public Cart Cart { get; set; }
-
-        public Address Address { get; set; }
+        public AddressResponseDto Address { get; set; }
     }
 }

@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\models\\dtos\\userdto\\userresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:models\\dtos\\userdto\\userresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\repositories\\userrepository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:repositories\\userrepository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\services\\authservice\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:services\\authservice\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\services\\productservice\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:services\\productservice\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\models\\dtos\\addressdto\\addressrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:models\\dtos\\addressdto\\addressrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\models\\dtos\\addressdto\\addressresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:models\\dtos\\addressdto\\addressresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +38,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 205,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "AuthService.cs",
               "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Services\\AuthService\\AuthService.cs",
               "RelativeDocumentMoniker": "Services\\AuthService\\AuthService.cs",
               "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Services\\AuthService\\AuthService.cs",
               "RelativeToolTip": "Services\\AuthService\\AuthService.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAAFIAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAAAKkAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T15:28:52.046Z",
+              "WhenOpened": "2024-10-07T17:08:02.985Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Services\\ProductService\\ProductService.cs",
-              "RelativeDocumentMoniker": "Services\\ProductService\\ProductService.cs",
-              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Services\\ProductService\\ProductService.cs",
-              "RelativeToolTip": "Services\\ProductService\\ProductService.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAgwDIAAAAMAAAAAAAAAA==",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAFEAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T15:25:10.275Z",
+              "WhenOpened": "2024-10-07T17:07:47.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Repositories\\UserRepository\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\UserRepository\\UserRepository.cs",
+              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Repositories\\UserRepository\\UserRepository.cs",
+              "RelativeToolTip": "Repositories\\UserRepository\\UserRepository.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAuwBMAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T17:07:33.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Mappings\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "Mappings\\MappingProfile.cs",
+              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Mappings\\MappingProfile.cs",
+              "RelativeToolTip": "Mappings\\MappingProfile.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T17:05:10.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AddressRequestDto.cs",
+              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Models\\DTOs\\AddressDto\\AddressRequestDto.cs",
+              "RelativeDocumentMoniker": "Models\\DTOs\\AddressDto\\AddressRequestDto.cs",
+              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Models\\DTOs\\AddressDto\\AddressRequestDto.cs",
+              "RelativeToolTip": "Models\\DTOs\\AddressDto\\AddressRequestDto.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBgAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T17:04:37.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AddressResponseDto.cs",
+              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Models\\DTOs\\AddressDto\\AddressResponseDto.cs",
+              "RelativeDocumentMoniker": "Models\\DTOs\\AddressDto\\AddressResponseDto.cs",
+              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Models\\DTOs\\AddressDto\\AddressResponseDto.cs",
+              "RelativeToolTip": "Models\\DTOs\\AddressDto\\AddressResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T17:04:35.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserResponseDto.cs",
+              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Models\\DTOs\\UserDto\\UserResponseDto.cs",
+              "RelativeDocumentMoniker": "Models\\DTOs\\UserDto\\UserResponseDto.cs",
+              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Models\\DTOs\\UserDto\\UserResponseDto.cs*",
+              "RelativeToolTip": "Models\\DTOs\\UserDto\\UserResponseDto.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T17:04:14.401Z",
               "EditorCaption": ""
             }
           ]

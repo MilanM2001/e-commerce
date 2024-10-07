@@ -58,16 +58,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "e_commerce_backend.Controllers.AuthController",
-    "Method": "Test",
-    "RelativePath": "api/Auth/test",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "e_commerce_backend.Controllers.ProductController",
     "Method": "GetById",
     "RelativePath": "api/Product/{id}",

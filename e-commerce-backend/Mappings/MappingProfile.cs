@@ -14,8 +14,8 @@ namespace e_commerce_backend.Mappings
         {
             // User Mapping
             CreateMap<User, RegisterDto>();
-            CreateMap<User, UserResponseDto>();
-                //.ForMember(dest => dest.Cart, opt => opt.MapFrom(src => src.Cart));
+            CreateMap<User, UserResponseDto>()
+                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address));
             CreateMap<RegisterDto, User>();
 
 
@@ -27,7 +27,8 @@ namespace e_commerce_backend.Mappings
 
             // Address Mapping
             CreateMap<AddressRequestDto, Address>(); 
-            CreateMap<Address, AddressRequestDto>(); 
+            CreateMap<Address, AddressRequestDto>();
+            CreateMap<Address, AddressResponseDto>();
 
         }
     }

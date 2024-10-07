@@ -54,14 +54,6 @@ namespace e_commerce_backend.Controllers
             }
         }
 
-        // This method only allows access to users with the role "User"
-        [HttpGet("test")]
-        [Authorize(Roles = "Admin")]
-        public IActionResult Test()
-        {
-            return Ok("Hello, User!");
-        }
-
         [HttpPost("refreshToken")]
         public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenDto refreshTokenDto)
         {

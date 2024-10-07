@@ -1,6 +1,12 @@
-﻿namespace e_commerce_backend.Services.CartService
+﻿using e_commerce_backend.Models.DTOs.CartDto;
+
+namespace e_commerce_backend.Services.CartService
 {
     public interface ICartService
     {
+        Task<CartResponseDto> GetCartByUserEmail(string email);
+        Task AddCart(CartRequestDto cartCreateDto);
+        Task UpdateCart(CartUpdateDto cartUpdateDto);
+        Task DeleteCart(int cartId);
     }
 }
