@@ -1,4 +1,4 @@
-export type ProductRequest = {
+export type ProductRequestDto = {
     name: string
     description: string
     price: number
@@ -6,7 +6,7 @@ export type ProductRequest = {
     category: string
 }
 
-export type ProductResponse = {
+export type ProductResponseDto = {
     id: number
     name: string
     description: string

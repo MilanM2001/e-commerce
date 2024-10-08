@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "Models\\DTOs\\CartDto\\CartResponseDto.cs",
               "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Models\\DTOs\\CartDto\\CartResponseDto.cs",
               "RelativeToolTip": "Models\\DTOs\\CartDto\\CartResponseDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-08T15:00:27.664Z",
               "EditorCaption": ""
@@ -51,8 +51,7 @@
               "RelativeToolTip": "Mappings\\MappingProfile.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAwCIAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-08T14:59:21.679Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-08T14:59:21.679Z"
             },
             {
               "$type": "Document",
@@ -64,8 +63,7 @@
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AgIAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-08T14:58:51.193Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-08T14:58:51.193Z"
             },
             {
               "$type": "Document",
@@ -77,8 +75,7 @@
               "RelativeToolTip": "Controllers\\CartController.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAuwCcAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-08T14:55:39.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-08T14:55:39.672Z"
             }
           ]
         }

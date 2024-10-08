@@ -1,7 +1,7 @@
-import { LoginRequest, RefreshTokenRequest, RegisterRequest } from "../model/auth"
+import { LoginRequestDto, RefreshTokenRequestDto, RegisterRequestDto } from "../model/auth"
 import api from "./api"
 
-const login = async (loginData: LoginRequest) => {
+const login = async (loginData: LoginRequestDto) => {
     try {
         const response = await api.post('/Auth/login', loginData)
         return response.data
@@ -16,7 +16,7 @@ const refreshToken = async () => {
         const storedRefreshToken = localStorage.getItem("refreshToken");
         if (!storedRefreshToken) throw new Error("No refresh token found");
 
-        let tokenData: RefreshTokenRequest = {
+        let tokenData: RefreshTokenRequestDto = {
             refreshToken: storedRefreshToken
         }
 
@@ -28,7 +28,7 @@ const refreshToken = async () => {
     }
 }
 
-const register = async (registerData: RegisterRequest) => {
+const register = async (registerData: RegisterRequestDto) => {
     try {
         await api.post("/Auth/register", registerData)
     } catch (error) {

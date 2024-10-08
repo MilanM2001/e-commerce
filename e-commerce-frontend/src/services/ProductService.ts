@@ -1,4 +1,4 @@
-import { ProductRequest } from "../model/product"
+import { ProductRequestDto } from "../model/product"
 import api from "./api"
 
 const getAllProducts = async () => {
@@ -21,7 +21,7 @@ const getProductById = async (id: number) => {
     }
 }
 
-const createProduct = async (productRequest: ProductRequest) => {
+const createProduct = async (productRequest: ProductRequestDto) => {
     try {
         await api.post("/Product/create", productRequest)
     } catch (error) {

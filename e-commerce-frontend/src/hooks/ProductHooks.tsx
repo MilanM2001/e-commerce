@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { ProductRequest, ProductResponse } from "../model/product"
+import { ProductRequestDto, ProductResponseDto } from "../model/product"
 import { createProduct, getAllProducts, getProductById } from "../services/ProductService"
 import { AppRoute } from "../routes/RoutesEnum"
 
 const useGetAllProducts = () => {
-    const [books, setProducts] = useState<ProductResponse[]>([]);
+    const [books, setProducts] = useState<ProductResponseDto[]>([]);
     const [loading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
 
@@ -29,7 +29,7 @@ const useGetAllProducts = () => {
 }
 
 const useGetProductById = (id: number) => {
-    const [book, setProduct] = useState<ProductResponse | null>(null);
+    const [book, setProduct] = useState<ProductResponseDto | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -62,7 +62,7 @@ const useCreateProduct = () => {
     const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
 
-    const createProductHandler = async (productRequest: ProductRequest) => {
+    const createProductHandler = async (productRequest: ProductRequestDto) => {
         try {
             setIsLoading(true)
             await createProduct(productRequest)

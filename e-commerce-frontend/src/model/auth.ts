@@ -1,22 +1,22 @@
-export type LoginRequest = {
+export type LoginRequestDto = {
     email: string
     password: string
 }
 
-export type RegisterRequest = {
+export type RegisterRequestDto = {
     email: string
     password: string
     name: string
-    address: AddressRequest
+    address: AddressRequestDto
 }
 
-type AddressRequest = {
+type AddressRequestDto = {
     street: string
     city: string
     zipCode: string
     country: string
 }
 
-export type RefreshTokenRequest = {
+export type RefreshTokenRequestDto = {
     refreshToken: string
 }

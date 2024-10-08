@@ -74,7 +74,8 @@ namespace e_commerce_backend.Controllers
             }
         }
 
-        [HttpPut]
+
+        [HttpPut("updateCart")]
         public async Task<IActionResult> UpdateCart([FromBody] CartUpdateDto cartUpdateDto)
         {
             try

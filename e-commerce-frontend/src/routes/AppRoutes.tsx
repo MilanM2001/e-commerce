@@ -7,6 +7,7 @@ import NotFoundPage from '../pages/NotFoundPage';
 import ProductDetailsPage from '../pages/ProductDetailsPage';
 import ProductCreatePage from '../pages/ProductCreatePage';
 import MyAccountPage from '../pages/MyAccountPage';
+import CartPage from '../pages/CartPage';
 
 const AppRoutes = () => {
     return (
@@ -17,7 +18,7 @@ const AppRoutes = () => {
             <Route path={AppRoute.CREATE_PRODUCT} element={<ProductCreatePage />} />
             <Route path={AppRoute.PRODUCT_DETAILS} element={<ProductDetailsPage />} />
             <Route path={AppRoute.MY_ACCOUNT} element={<MyAccountPage />} />
-
+            <Route path={AppRoute.CART} element={<CartPage />} />
             <Route path={AppRoute.NOT_FOUND} element={<NotFoundPage />} />
         </Routes>
     );

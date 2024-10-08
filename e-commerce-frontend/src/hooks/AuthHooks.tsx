@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LoginRequest, RegisterRequest } from "../model/auth";
+import { LoginRequestDto, RegisterRequestDto } from "../model/auth";
 import { getMe, login, register } from "../services/AuthService";
 import { useAuth } from "../services/AuthContext";
 
@@ -11,7 +11,7 @@ const useLogin = () => {
     const { login: loginContext } = useAuth();
     const navigate = useNavigate();
 
-    const loginHandler = async (loginData: LoginRequest) => {
+    const loginHandler = async (loginData: LoginRequestDto) => {
         try {
             setIsLoading(true);
             const data = await login(loginData);
@@ -60,7 +60,7 @@ const useRegister = () => {
     const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
 
-    const registerHandler = async (registerData: RegisterRequest) => {
+    const registerHandler = async (registerData: RegisterRequestDto) => {
         try {
             setIsLoading(true)
             await register(registerData)

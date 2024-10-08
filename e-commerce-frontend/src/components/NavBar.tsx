@@ -3,15 +3,27 @@ import '../css/NavBar.css';
 import { AppRoute } from '../routes/RoutesEnum';
 import { useLogout } from '../hooks/AuthHooks';
 import { useAuth } from '../services/AuthContext';
+import { IconButton, Avatar, Menu, MenuItem } from '@mui/material';
+import { ShoppingCart } from '@mui/icons-material';
+import { useState } from 'react';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const { logoutHandler } = useLogout();
     const { role, isAuthenticated } = useAuth();
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
     const handleLogout = async () => {
         await logoutHandler();
         navigate(AppRoute.LOGIN);
+    };
+
+    const handleUserMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleUserMenuClose = () => {
+        setAnchorEl(null);
     };
 
     return (
@@ -30,8 +42,22 @@ const Navbar = () => {
                         {role === 'Admin' && (
                             <Link to={AppRoute.CREATE_PRODUCT}>Create Product</Link>
                         )}
-                        <Link to={AppRoute.MY_ACCOUNT}>My Account</Link>
-                        <Link to="/" onClick={handleLogout}>Logout</Link>
+                        <IconButton onClick={() => navigate(AppRoute.CART)} className="cart-button">
+                            <ShoppingCart className="cart-icon" />
+                        </IconButton>
+                        <IconButton onClick={handleUserMenuOpen} className="avatar-button">
+                            <Avatar alt="User Icon" sx={{ width: 30, height: 30 }} />
+                        </IconButton>
+                        <Menu
+                            anchorEl={anchorEl}
+                            open={Boolean(anchorEl)}
+                            onClose={handleUserMenuClose}
+                        >
+                            <MenuItem onClick={() => { navigate(AppRoute.MY_ACCOUNT); handleUserMenuClose(); }}>
+                                My Account
+                            </MenuItem>
+                            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                        </Menu>
                     </>
                 )}
             </div>
