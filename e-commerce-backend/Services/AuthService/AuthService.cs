@@ -64,6 +64,29 @@ namespace e_commerce_backend.Services.AuthService
             return authenticationResponseDto;
         }
 
+        public async Task<UserResponseDto> GetMe()
+        {
+            var email = "";
+            if (_httpContextAccessor.HttpContext != null)
+            {
+                email = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                Console.WriteLine(email);
+            }
+
+            if (string.IsNullOrEmpty(email))
+                throw new SecurityTokenException("Token invalid");
+
+
+            var user = await _userRepository.GetByEmailAsync(email);
+
+            if (user == null)
+                throw new EntityNotFoundException("User not found");
+
+            var userResponse = _mapper.Map<UserResponseDto>(user);
+
+            return userResponse;
+        }
+
         public string GenerateAccessToken(User user)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -153,31 +176,6 @@ namespace e_commerce_backend.Services.AuthService
                 throw new SecurityTokenException("Invalid refresh token", ex);
             }
         }
-
-        public async Task<UserResponseDto> GetMe()
-        {
-            var email = "";
-            if (_httpContextAccessor.HttpContext != null)
-            {
-                email = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                Console.WriteLine(email);
-            }
-
-            if (string.IsNullOrEmpty(email))
-                throw new SecurityTokenException("Token invalid");
-                
-
-            var user = await _userRepository.GetByEmailAsync(email);
-
-            if (user == null)
-                throw new EntityNotFoundException("User not found");
-
-            var userResponse = _mapper.Map<UserResponseDto>(user);
-
-            return userResponse;
-        }
-
-
 
     }
 

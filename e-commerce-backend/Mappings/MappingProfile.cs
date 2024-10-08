@@ -5,6 +5,7 @@ using e_commerce_backend.Models;
 using e_commerce_backend.Models.Enums;
 using e_commerce_backend.Models.DTOs.UserDto;
 using e_commerce_backend.Models.DTOs.ProductDto;
+using e_commerce_backend.Models.DTOs.CartDto;
 
 namespace e_commerce_backend.Mappings
 {
@@ -29,6 +30,9 @@ namespace e_commerce_backend.Mappings
             CreateMap<AddressRequestDto, Address>(); 
             CreateMap<Address, AddressRequestDto>();
             CreateMap<Address, AddressResponseDto>();
+
+            // Cart Mapping
+            CreateMap<Cart, CartResponseDto>();
 
         }
     }

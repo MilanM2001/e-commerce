@@ -1,7 +1,9 @@
 ﻿using e_commerce_backend.Exceptions;
 using e_commerce_backend.Models.DTOs.CartDto;
 using e_commerce_backend.Services.CartService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace e_commerce_backend.Controllers
 {
@@ -22,12 +24,35 @@ namespace e_commerce_backend.Controllers
             try
             {
                 var cart = await _cartService.GetCartByUserEmail(email);
-                if (cart == null) return NotFound("Cart not found");
                 return Ok(cart);
             }
             catch (EntityNotFoundException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("getMyCart")]
+        [Authorize(Roles ="User, Admin")]
+        public async Task<IActionResult> GetMyCart()
+        {
+            try
+            {
+                CartResponseDto cart = await _cartService.GetMyCart();
+
+                return Ok(cart);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (SecurityTokenException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {

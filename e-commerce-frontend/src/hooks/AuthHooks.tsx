@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginRequest, RegisterRequest } from "../model/auth";
-import { login, register } from "../services/AuthService";
+import { getMe, login, register } from "../services/AuthService";
 import { useAuth } from "../services/AuthContext";
 
 const useLogin = () => {
@@ -78,4 +78,24 @@ const useRegister = () => {
     return { registerHandler, loading, error, errorMessage }
 }
 
-export { useLogin, useLogout, useRegister }
+const useGetMe = () => {
+    const [loading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
+
+    const getMeHandler = async () => {
+        try {
+            setIsLoading(true)
+            const res = await getMe()
+            return res
+        } catch (error: any) {
+            setError(error)
+            return null
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    return { getMeHandler, loading, error }
+}
+
+export { useLogin, useLogout, useRegister, useGetMe }
