@@ -6,7 +6,7 @@ namespace e_commerce_backend.Models.DTOs.CartDto
     {
         public string Id { get; set; }
         public string UserEmail { get; set; }
-        public List<ProductResponseDto> Products { get; set; }
+        public List<CartProduct> CartProducts { get; set; }
         public decimal TotalPrice { get; set; }
     }
 }

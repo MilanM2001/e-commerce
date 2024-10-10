@@ -5,7 +5,7 @@ import { createProduct, getAllProducts, getProductById } from "../services/Produ
 import { AppRoute } from "../routes/RoutesEnum"
 
 const useGetAllProducts = () => {
-    const [books, setProducts] = useState<ProductResponseDto[]>([]);
+    const [products, setProducts] = useState<ProductResponseDto[]>([]);
     const [loading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
 
@@ -25,11 +25,11 @@ const useGetAllProducts = () => {
         }
         getAllProductsHandler()
     }, [])
-    return { books, loading, error }
+    return { products, loading, error }
 }
 
 const useGetProductById = (id: number) => {
-    const [book, setProduct] = useState<ProductResponseDto | null>(null);
+    const [product, setProduct] = useState<ProductResponseDto | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -42,7 +42,7 @@ const useGetProductById = (id: number) => {
                 setProduct(response);
             } catch (error: any) {
                 setError(error);
-                console.error("Error in finding book by ISBN:", error);
+                console.error("Error in finding product by id:", error);
             } finally {
                 setLoading(false);
             }
@@ -53,7 +53,7 @@ const useGetProductById = (id: number) => {
         }
     }, [id]);
 
-    return { book, loading, error };
+    return { product, loading, error };
 };
 
 const useCreateProduct = () => {

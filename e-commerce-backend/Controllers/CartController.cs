@@ -18,24 +18,6 @@ namespace e_commerce_backend.Controllers
             _cartService = cartService;
         }
 
-        [HttpGet("{email}")]
-        public async Task<IActionResult> GetCartByUserEmail(string email)
-        {
-            try
-            {
-                var cart = await _cartService.GetCartByUserEmail(email);
-                return Ok(cart);
-            }
-            catch (EntityNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
         [HttpGet("getMyCart")]
         [Authorize(Roles ="User, Admin")]
         public async Task<IActionResult> GetMyCart()
@@ -60,22 +42,9 @@ namespace e_commerce_backend.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddCart([FromBody] CartRequestDto cartRequestDto)
-        {
-            try
-            {
-                await _cartService.AddCart(cartRequestDto);
-                return Ok("Cart created successfully");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-
+        
         [HttpPut("updateCart")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> UpdateCart([FromBody] CartUpdateDto cartUpdateDto)
         {
             try
@@ -87,24 +56,14 @@ namespace e_commerce_backend.Controllers
             {
                 return NotFound(ex.Message);
             } 
+            catch (SecurityTokenException ex)
+            {
+                return BadRequest(ex.Message);
+            }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);  
             }
-        }
-
-        [HttpDelete("{cartId}")]
-        public async Task<IActionResult> DeleteCart(int cartId)
-        {
-            try
-            {
-                await _cartService.DeleteCart(cartId);
-                return Ok("Cart deleted successfully");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        }       
     }
 }

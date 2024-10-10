@@ -59,24 +59,18 @@
   },
   {
     "ContainingType": "e_commerce_backend.Controllers.CartController",
-    "Method": "AddCart",
-    "RelativePath": "api/Cart",
-    "HttpMethod": "POST",
+    "Method": "GetMyCart",
+    "RelativePath": "api/Cart/getMyCart",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "cartRequestDto",
-        "Type": "e_commerce_backend.Models.DTOs.CartDto.CartRequestDto",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
     "ContainingType": "e_commerce_backend.Controllers.CartController",
     "Method": "UpdateCart",
-    "RelativePath": "api/Cart",
+    "RelativePath": "api/Cart/updateCart",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -87,48 +81,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "e_commerce_backend.Controllers.CartController",
-    "Method": "DeleteCart",
-    "RelativePath": "api/Cart/{cartId}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "cartId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "e_commerce_backend.Controllers.CartController",
-    "Method": "GetCartByUserEmail",
-    "RelativePath": "api/Cart/{email}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "e_commerce_backend.Controllers.CartController",
-    "Method": "GetMyCart",
-    "RelativePath": "api/Cart/getMyCart",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {

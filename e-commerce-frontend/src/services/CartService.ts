@@ -1,3 +1,5 @@
+import { CartUpdateDto } from "../model/cart";
+import { CartProduct } from "../model/cartProduct";
 import api from "./api";
 
 const getMyCart = async () => {
@@ -10,4 +12,13 @@ const getMyCart = async () => {
     }
 };
 
-export { getMyCart }
+const updateCart = async (cartUpdateDto: CartUpdateDto) => {
+    try {
+        await api.put("/Cart/updateCart", cartUpdateDto)
+    } catch (error) {
+        console.error("Cart Update error:", error)
+        throw error
+    }
+}
+
+export { getMyCart, updateCart }

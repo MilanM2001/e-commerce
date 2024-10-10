@@ -22,21 +22,6 @@ namespace e_commerce_backend.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("CartProduct", b =>
-                {
-                    b.Property<int>("CartsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CartsId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("CartProduct");
-                });
-
             modelBuilder.Entity("e_commerce_backend.Models.Address", b =>
                 {
                     b.Property<int>("Id")
@@ -85,6 +70,9 @@ namespace e_commerce_backend.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(65,30)");
 
@@ -94,10 +82,38 @@ namespace e_commerce_backend.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ProductId");
+
                     b.HasIndex("UserEmail")
                         .IsUnique();
 
                     b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("e_commerce_backend.Models.CartProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartProducts");
                 });
 
             modelBuilder.Entity("e_commerce_backend.Models.Order", b =>
@@ -183,21 +199,6 @@ namespace e_commerce_backend.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("CartProduct", b =>
-                {
-                    b.HasOne("e_commerce_backend.Models.Cart", null)
-                        .WithMany()
-                        .HasForeignKey("CartsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("e_commerce_backend.Models.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("e_commerce_backend.Models.Address", b =>
                 {
                     b.HasOne("e_commerce_backend.Models.User", "User")
@@ -211,6 +212,10 @@ namespace e_commerce_backend.Migrations
 
             modelBuilder.Entity("e_commerce_backend.Models.Cart", b =>
                 {
+                    b.HasOne("e_commerce_backend.Models.Product", null)
+                        .WithMany("Carts")
+                        .HasForeignKey("ProductId");
+
                     b.HasOne("e_commerce_backend.Models.User", "User")
                         .WithOne("Cart")
                         .HasForeignKey("e_commerce_backend.Models.Cart", "UserEmail")
@@ -218,6 +223,21 @@ namespace e_commerce_backend.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("e_commerce_backend.Models.CartProduct", b =>
+                {
+                    b.HasOne("e_commerce_backend.Models.Cart", null)
+                        .WithMany("CartProducts")
+                        .HasForeignKey("CartId");
+
+                    b.HasOne("e_commerce_backend.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("e_commerce_backend.Models.Order", b =>
@@ -229,6 +249,16 @@ namespace e_commerce_backend.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("e_commerce_backend.Models.Cart", b =>
+                {
+                    b.Navigation("CartProducts");
+                });
+
+            modelBuilder.Entity("e_commerce_backend.Models.Product", b =>
+                {
+                    b.Navigation("Carts");
                 });
 
             modelBuilder.Entity("e_commerce_backend.Models.User", b =>

@@ -11,9 +11,9 @@ namespace e_commerce_backend.Models
         [Required]
         [ForeignKey("User")]
         public string UserEmail { get; set; }
-        public User User { get; set; } 
+        public User User { get; set; }
 
-        public ICollection<Product> Products { get; set; } = new List<Product>();
+        public List<CartProduct> CartProducts { get; set; } = new List<CartProduct>();
 
         [Required]
         [Range(0.01, 1000000.00)]  

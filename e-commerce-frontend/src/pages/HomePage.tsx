@@ -4,7 +4,7 @@ import '../css/HomePage.css';
 import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
-    const { books, loading, error } = useGetAllProducts();
+    const { products, loading, error } = useGetAllProducts();
     const navigate = useNavigate();
 
     if (loading) {
@@ -32,7 +32,7 @@ const HomePage = () => {
                     style={{ maxWidth: '400px', margin: '0 auto' }}
                 />
                 <Grid container spacing={4} style={{ padding: '16px' }}>
-                    {books.map((product) => (
+                    {products.map((product) => (
                         <Grid item xs={12} sm={6} md={4} key={product.id}>
                             <Card className="product-card">
                                 <CardMedia

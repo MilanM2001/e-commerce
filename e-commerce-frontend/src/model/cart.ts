@@ -1,8 +1,12 @@
-import { ProductResponseDto } from "./product"
+import { CartProduct } from "./cartProduct"
 
 export type CartResponseDto = {
-    id: number
-    userEmail: string
-    products: ProductResponseDto[]
-    totalPrice: number
-}
+    id: number;
+    userEmail: string;
+    cartProducts: CartProduct[];
+    totalPrice: number;
+};
+
+export type CartUpdateDto = {
+    cartProducts: CartProduct[];
+};

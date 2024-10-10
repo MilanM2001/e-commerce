@@ -57,3 +57,15 @@
     color: red;
     margin-top: 50px;
 }
+
+.add-to-cart-button {
+    margin-top: 20px;
+    background-color: #ffcc00;
+    color: #000000;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+    background-color: #ffaa00;
+}

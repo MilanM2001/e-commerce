@@ -24,6 +24,7 @@ namespace e_commerce_backend.Mappings
             CreateMap<Product, ProductResponseDto>();
             CreateMap<ProductRequestDto, Product>();
             CreateMap<ProductUpdateDto, Product>();
+            CreateMap<ProductResponseDto, Product>();
 
 
             // Address Mapping
@@ -33,6 +34,7 @@ namespace e_commerce_backend.Mappings
 
             // Cart Mapping
             CreateMap<Cart, CartResponseDto>();
+            CreateMap<CartUpdateDto, Cart>();
 
         }
     }

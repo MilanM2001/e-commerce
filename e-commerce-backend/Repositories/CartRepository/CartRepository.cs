@@ -17,7 +17,8 @@ namespace e_commerce_backend.Repositories.CartRepository
         public async Task<Cart> GetCartByUserEmail(string email)
         {
             return await _context.Carts
-                .Include(c => c.Products)
+                .Include(c => c.CartProducts) 
+                .ThenInclude(cp => cp.Product) 
                 .FirstOrDefaultAsync(c => c.UserEmail == email);
         }
 

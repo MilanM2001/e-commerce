@@ -1,42 +1,47 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useGetMyCart } from '../hooks/CartHooks';
 import '../css/CartPage.css';
-import { CartResponseDto } from '../model/cart';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store'; // Make sure the path is correct
+import { CartProduct } from '../model/cartProduct';
 
 const CartPage = () => {
-    const { getMeHandler, loading, error } = useGetMyCart();
-    const [cart, setCart] = useState<CartResponseDto | null>(null);
+    const { getMyCartHandler, loading, error } = useGetMyCart();
+    const cart = useSelector((state: RootState) => state.cart); // Select the cart from the Redux store
 
     useEffect(() => {
         const fetchCart = async () => {
-            const cartData = await getMeHandler();
-            if (cartData) setCart(cartData);
+            await getMyCartHandler();
         };
         fetchCart();
-    }, []);
+    }, [getMyCartHandler]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error loading cart.</p>;
 
     return (
         <div className="cart-page">
-            {cart && cart.products.length > 0 ? (
+            {cart.products.length > 0 ? (
                 <div className="cart-container">
                     <div className="cart-items">
                         <h2>My Cart</h2>
-                        {cart.products.map((product) => (
-                            <div key={product.id} className="cart-item">
-                                <h3>{product.name}</h3>
-                                <p>{product.description}</p>
-                                <p>Price: ${product.price}</p>
-                                <p>Quantity: {product.quantity}</p>
+                        {cart.products.map((cartProduct: CartProduct) => (
+                            <div key={cartProduct.productId} className="cart-item">
+                                <h3>{cartProduct.product.name}</h3>
+                                <p>{cartProduct.product.description}</p>
+                                <p>Price: ${cartProduct.product.price.toFixed(2)}</p>
+                                <p>Quantity: {cartProduct.quantity}</p>
+                                <p>
+                                    Total: $
+                                    {(cartProduct.product.price * cartProduct.quantity).toFixed(2)}
+                                </p>
                             </div>
                         ))}
                     </div>
                     <div className="cart-summary">
                         <h2>Summary</h2>
-                        <p>Total Price: ${cart.totalPrice}</p>
+                        <p>Total Price: ${cart.totalPrice.toFixed(2)}</p>
                         <button className="buy-button">Buy</button>
                     </div>
                 </div>
