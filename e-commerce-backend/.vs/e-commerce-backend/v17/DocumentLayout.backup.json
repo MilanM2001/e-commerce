@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\repositories\\cartrepository\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:repositories\\cartrepository\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\services\\cartservice\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:services\\cartservice\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\models\\cartproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:models\\cartproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,66 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CartRepository.cs",
-              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Repositories\\CartRepository\\CartRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\CartRepository\\CartRepository.cs",
-              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Repositories\\CartRepository\\CartRepository.cs*",
-              "RelativeToolTip": "Repositories\\CartRepository\\CartRepository.cs*",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAMwBMAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:28:59.931Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CartService.cs",
-              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Services\\CartService\\CartService.cs",
-              "RelativeDocumentMoniker": "Services\\CartService\\CartService.cs",
-              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Services\\CartService\\CartService.cs",
-              "RelativeToolTip": "Services\\CartService\\CartService.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAWwC8AAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:28:46.789Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CartController.cs",
-              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Controllers\\CartController.cs",
-              "RelativeToolTip": "Controllers\\CartController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABoAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:28:33.813Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "ProductController.cs",
               "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
               "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Controllers\\ProductController.cs",
               "RelativeToolTip": "Controllers\\ProductController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAAEAAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:28:30.948Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CartProduct.cs",
-              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Models\\CartProduct.cs",
-              "RelativeDocumentMoniker": "Models\\CartProduct.cs",
-              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Models\\CartProduct.cs",
-              "RelativeToolTip": "Models\\CartProduct.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:21:41.079Z",
+              "WhenOpened": "2024-10-11T15:57:29.233Z",
               "EditorCaption": ""
             }
           ]

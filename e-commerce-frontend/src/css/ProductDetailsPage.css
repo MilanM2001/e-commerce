@@ -1,11 +1,12 @@
 .product-details-card {
-    max-width: 800px;
+    max-width: 450px;
     margin: 50px auto;
     padding: 24px;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
     background-color: #fff;
+    margin-top: 100px;
 }
 
 .product-details-card:hover {
@@ -15,7 +16,7 @@
 .product-image {
     border-radius: 12px;
     margin-bottom: 16px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .product-details-content {

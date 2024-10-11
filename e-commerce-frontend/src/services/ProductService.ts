@@ -1,4 +1,4 @@
-import { ProductRequestDto } from "../model/product"
+import { ProductRequestDto, ProductUpdateDto } from "../model/product"
 import api from "./api"
 
 const getAllProducts = async () => {
@@ -30,4 +30,13 @@ const createProduct = async (productRequest: ProductRequestDto) => {
     }
 }
 
-export { getAllProducts, getProductById, createProduct }
+const updateProduct = async (id: number, productUpdate: ProductUpdateDto) => {
+    try {
+        await api.put(`/Product/update/${id}`, productUpdate)
+    } catch (error) {
+        console.error("Update Product error:", error)
+        throw error
+    }
+}
+
+export { getAllProducts, getProductById, createProduct, updateProduct }

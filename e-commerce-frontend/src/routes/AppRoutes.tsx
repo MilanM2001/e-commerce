@@ -8,6 +8,7 @@ import ProductDetailsPage from '../pages/ProductDetailsPage';
 import ProductCreatePage from '../pages/ProductCreatePage';
 import MyAccountPage from '../pages/MyAccountPage';
 import CartPage from '../pages/CartPage';
+import ProductUpdatePage from '../pages/ProductUpdatePage';
 
 const AppRoutes = () => {
     return (
@@ -16,6 +17,7 @@ const AppRoutes = () => {
             <Route path={AppRoute.LOGIN} element={<LoginPage />} />
             <Route path={AppRoute.REGISTER} element={<RegisterPage />} />
             <Route path={AppRoute.CREATE_PRODUCT} element={<ProductCreatePage />} />
+            <Route path={AppRoute.UPDATE_PRODUCT} element={<ProductUpdatePage />} />
             <Route path={AppRoute.PRODUCT_DETAILS} element={<ProductDetailsPage />} />
             <Route path={AppRoute.MY_ACCOUNT} element={<MyAccountPage />} />
             <Route path={AppRoute.CART} element={<CartPage />} />

@@ -12,11 +12,10 @@ const CartPage = () => {
 
     useEffect(() => {
         const fetchCart = async () => {
-            await getMyCartHandler();
+            await getMyCartHandler(); // Fetch the cart when the component is mounted
         };
         fetchCart();
-    }, [getMyCartHandler]);
-
+    }, []);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error loading cart.</p>;
 
@@ -33,8 +32,10 @@ const CartPage = () => {
                                 <p>Price: ${cartProduct.product.price.toFixed(2)}</p>
                                 <p>Quantity: {cartProduct.quantity}</p>
                                 <p>
-                                    Total: $
-                                    {(cartProduct.product.price * cartProduct.quantity).toFixed(2)}
+                                    Total: ${(
+                                        cartProduct.product.price *
+                                        cartProduct.quantity
+                                    ).toFixed(2)}
                                 </p>
                             </div>
                         ))}
@@ -48,7 +49,9 @@ const CartPage = () => {
             ) : (
                 <div className="empty-cart">
                     <p>Your cart is empty</p>
-                    <Link to="/" className="go-home-button">Go back to main page</Link>
+                    <Link to="/" className="go-home-button">
+                        Go back to main page
+                    </Link>
                 </div>
             )}
         </div>

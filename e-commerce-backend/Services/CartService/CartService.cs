@@ -97,9 +97,7 @@ namespace e_commerce_backend.Services.CartService
                     });
                 }
 
-                // Reduce the original product's quantity by 1
-                existingProduct.Quantity -= 1;
-                await _productRepository.UpdateProduct(existingProduct); // Ensure the product quantity is updated
+            
             }
 
             // Calculate the updated total price

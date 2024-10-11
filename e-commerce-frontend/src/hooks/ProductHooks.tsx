@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { ProductRequestDto, ProductResponseDto } from "../model/product"
-import { createProduct, getAllProducts, getProductById } from "../services/ProductService"
+import { ProductRequestDto, ProductResponseDto, ProductUpdateDto } from "../model/product"
+import { createProduct, getAllProducts, getProductById, updateProduct } from "../services/ProductService"
 import { AppRoute } from "../routes/RoutesEnum"
 
 const useGetAllProducts = () => {
@@ -80,4 +80,28 @@ const useCreateProduct = () => {
     return { createProductHandler, loading, error, errorMessage }
 }
 
-export { useGetAllProducts, useGetProductById, useCreateProduct }
+const useUpdateProduct = () => {
+    const [loading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
+    const [errorMessage, setErrorMessage] = useState('')
+    const navigate = useNavigate()
+
+    const updateProductHandler = async (id: number, productUpdate: ProductUpdateDto) => {
+        try {
+            setIsLoading(true)
+            await updateProduct(id, productUpdate)
+            navigate(AppRoute.HOME)
+        } catch (error: any) {
+            if (error.response) {
+                setErrorMessage("Error updating product")
+            }
+            setError(error)
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    return { updateProductHandler, loading, error, errorMessage }
+}
+
+export { useGetAllProducts, useGetProductById, useCreateProduct, useUpdateProduct }

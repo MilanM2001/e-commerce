@@ -3,7 +3,6 @@ import { getMyCart, updateCart } from "../services/CartService"
 import { CartUpdateDto } from "../model/cart"
 import { useDispatch } from "react-redux";
 import { setCart } from "../store/cartSlice";
-import { CartProduct } from "../model/cartProduct";
 
 const useGetMyCart = () => {
     const [loading, setIsLoading] = useState(false);
@@ -13,11 +12,16 @@ const useGetMyCart = () => {
     const getMyCartHandler = async () => {
         try {
             setIsLoading(true);
-            const res = await getMyCart(); // Fetch cart from API
+            const res = await getMyCart();
 
             if (res) {
-                dispatch(setCart(res)); // Save the fetched cart into Redux
+                // Extract the products and total price from the response
+                const { cartProducts, totalPrice } = res;
+
+                // Dispatch only the products
+                dispatch(setCart({ products: cartProducts, totalPrice })); // Pass products and total price to the action
             }
+
             return res
         } catch (error: any) {
             setError(error);
