@@ -1,24 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using e_commerce_backend.Models.DTOs.OrderedProductDto;
 
-namespace e_commerce_backend.Models
+namespace e_commerce_backend.Models.DTOs.OrderDto
 {
-    public class Order
+    public class OrderResponseDto
     {
-        [Key]
         public int Id { get; set; }
 
-        [Required]
         public DateTime OrderDate { get; set; }
 
-        [Required]  
         public decimal TotalAmount { get; set; }
 
-        [Required]
-        [ForeignKey("User")]
         public string UserEmail { get; set; }
-        public User User { get; set; }
 
-        public List<OrderedProduct> OrderedProducts { get; set; } = new List<OrderedProduct>();
+        public List<OrderedProductResponseDto> OrderedProducts { get; set; } = new List<OrderedProductResponseDto>();
     }
 }

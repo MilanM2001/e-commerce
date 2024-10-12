@@ -11,6 +11,7 @@ namespace e_commerce_backend.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<CartProduct> CartProducts { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderedProduct> OrderedProducts { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Address> Address { get; set; }
     }

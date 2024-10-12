@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace e_commerce_backend.Migrations
 {
     /// <inheritdoc />
-    public partial class cartChanges : Migration
+    public partial class logicChanges : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -162,6 +162,30 @@ namespace e_commerce_backend.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "OrderedProducts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    OrderId = table.Column<int>(type: "int", nullable: false),
+                    ProductName = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    PriceAtPurchase = table.Column<decimal>(type: "decimal(65,30)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderedProducts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderedProducts_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Address_UserEmail",
                 table: "Address",
@@ -190,6 +214,11 @@ namespace e_commerce_backend.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_OrderedProducts_OrderId",
+                table: "OrderedProducts",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Orders_UserEmail",
                 table: "Orders",
                 column: "UserEmail");
@@ -205,10 +234,13 @@ namespace e_commerce_backend.Migrations
                 name: "CartProducts");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "OrderedProducts");
 
             migrationBuilder.DropTable(
                 name: "Carts");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Products");

@@ -84,6 +84,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "e_commerce_backend.Controllers.OrderController",
+    "Method": "CreateOrder",
+    "RelativePath": "api/Order/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderRequestDto",
+        "Type": "e_commerce_backend.Models.DTOs.OrderDto.OrderRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "e_commerce_backend.Controllers.OrderController",
+    "Method": "GetMyOrders",
+    "RelativePath": "api/Order/myOrders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "e_commerce_backend.Controllers.ProductController",
     "Method": "GetById",
     "RelativePath": "api/Product/{id}",

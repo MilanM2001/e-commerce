@@ -37,10 +37,8 @@ namespace e_commerce_backend.Services.CartService
         {
             var email = "";
             if (_httpContextAccessor.HttpContext != null)
-            {
                 email = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                Console.WriteLine(email);
-            }
+            
 
             if (string.IsNullOrEmpty(email))
                 throw new SecurityTokenException("Token invalid");

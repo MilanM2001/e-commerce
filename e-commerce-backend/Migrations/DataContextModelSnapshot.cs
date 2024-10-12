@@ -141,6 +141,34 @@ namespace e_commerce_backend.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("e_commerce_backend.Models.OrderedProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("PriceAtPurchase")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderedProducts");
+                });
+
             modelBuilder.Entity("e_commerce_backend.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -251,9 +279,25 @@ namespace e_commerce_backend.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("e_commerce_backend.Models.OrderedProduct", b =>
+                {
+                    b.HasOne("e_commerce_backend.Models.Order", "Order")
+                        .WithMany("OrderedProducts")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("e_commerce_backend.Models.Cart", b =>
                 {
                     b.Navigation("CartProducts");
+                });
+
+            modelBuilder.Entity("e_commerce_backend.Models.Order", b =>
+                {
+                    b.Navigation("OrderedProducts");
                 });
 
             modelBuilder.Entity("e_commerce_backend.Models.Product", b =>

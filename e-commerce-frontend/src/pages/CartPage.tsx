@@ -1,23 +1,41 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useGetMyCart } from '../hooks/CartHooks';
+import { useCreateOrder } from '../hooks/OrderHooks'; // Assuming the hook is in OrderHooks
 import '../css/CartPage.css';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/store'; // Make sure the path is correct
+import { RootState } from '../store/store';
 import { CartProduct } from '../model/cartProduct';
+import { CircularProgress, Button, Typography } from '@mui/material';
 
 const CartPage = () => {
-    const { getMyCartHandler, loading, error } = useGetMyCart();
-    const cart = useSelector((state: RootState) => state.cart); // Select the cart from the Redux store
+    const { getMyCartHandler, loading: loadingCart, error: cartError } = useGetMyCart();
+    const { createOrderHandler, loading: creatingOrder, error: orderError } = useCreateOrder();
+
+    const cart = useSelector((state: RootState) => state.cart);
 
     useEffect(() => {
         const fetchCart = async () => {
-            await getMyCartHandler(); // Fetch the cart when the component is mounted
+            await getMyCartHandler();
         };
         fetchCart();
     }, []);
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error loading cart.</p>;
+
+    const handleBuyClick = async () => {
+        const orderRequest = {
+            totalAmount: cart.totalPrice,
+            cartProducts: cart.products.map((cartProduct: CartProduct) => ({
+                productId: cartProduct.productId,
+                product: cartProduct.product,
+                quantity: cartProduct.quantity,
+            })),
+        };
+
+        await createOrderHandler(orderRequest);
+    };
+
+    if (loadingCart) return <CircularProgress />;
+    if (cartError) return <Typography color="error">Error loading cart.</Typography>;
 
     return (
         <div className="cart-page">
@@ -43,7 +61,16 @@ const CartPage = () => {
                     <div className="cart-summary">
                         <h2>Summary</h2>
                         <p>Total Price: ${cart.totalPrice.toFixed(2)}</p>
-                        <button className="buy-button">Buy</button>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleBuyClick}
+                            disabled={creatingOrder}
+                            className="buy-button"
+                        >
+                            {creatingOrder ? <CircularProgress size={24} /> : 'Buy'}
+                        </Button>
+                        {orderError && <Typography color="error">Error while submitting the order</Typography>}
                     </div>
                 </div>
             ) : (

@@ -12,6 +12,6 @@ namespace e_commerce_backend.Models
         public Product Product { get; set; }
 
         [Required]
-        public int Quantity { get; set; } = 1;
+        public int Quantity { get; set; }
     }
 }
