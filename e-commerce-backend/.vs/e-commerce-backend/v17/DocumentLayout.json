@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|d:\\projects\\e-commerce-project\\e-commerce-backend\\tests\\productservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6601B9F7-463C-48E1-A34F-0B5CEF231D43}|e-commerce-backend.csproj|solutionrelative:tests\\productservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 247,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductServiceTests.cs",
+              "DocumentMoniker": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Tests\\ProductServiceTests.cs",
+              "RelativeDocumentMoniker": "Tests\\ProductServiceTests.cs",
+              "ToolTip": "D:\\Projects\\e-commerce-project\\e-commerce-backend\\Tests\\ProductServiceTests.cs",
+              "RelativeToolTip": "Tests\\ProductServiceTests.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAowH0AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T19:48:25.969Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -5,7 +5,6 @@ import InputField from '../components/InputField';
 import { useLogin } from '../hooks/AuthHooks';
 import '../css/LoginPage.css';
 
-// Validation schema using Yup
 const validationSchema = Yup.object().shape({
     email: Yup.string()
         .email('Invalid email format')

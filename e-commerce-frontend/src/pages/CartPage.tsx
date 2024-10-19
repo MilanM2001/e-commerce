@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useGetMyCart } from '../hooks/CartHooks';
-import { useCreateOrder } from '../hooks/OrderHooks'; // Assuming the hook is in OrderHooks
+import { useCreateOrder } from '../hooks/OrderHooks'; 
 import '../css/CartPage.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
@@ -23,6 +23,7 @@ const CartPage = () => {
 
     const handleBuyClick = async () => {
         const orderRequest = {
+            cartId: cart.cartId,
             totalAmount: cart.totalPrice,
             cartProducts: cart.products.map((cartProduct: CartProduct) => ({
                 productId: cartProduct.productId,

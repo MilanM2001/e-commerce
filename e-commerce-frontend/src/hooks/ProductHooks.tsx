@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { ProductRequestDto, ProductResponseDto, ProductUpdateDto } from "../model/product"
+import { ProductResponseDto, ProductUpdateDto } from "../model/product"
 import { createProduct, getAllProducts, getProductById, updateProduct } from "../services/ProductService"
 import { AppRoute } from "../routes/RoutesEnum"
 
@@ -16,7 +16,6 @@ const useGetAllProducts = () => {
                 const res = await getAllProducts()
                 setProducts(res)
             } catch (error: any) {
-                setIsLoading(false)
                 setError(error)
             } finally {
                 setIsLoading(false)
@@ -62,7 +61,7 @@ const useCreateProduct = () => {
     const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
 
-    const createProductHandler = async (productRequest: ProductRequestDto) => {
+    const createProductHandler = async (productRequest: FormData) => {
         try {
             setIsLoading(true)
             await createProduct(productRequest)

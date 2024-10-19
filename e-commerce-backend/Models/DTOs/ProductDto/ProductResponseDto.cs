@@ -15,5 +15,7 @@ namespace e_commerce_backend.Models.DTOs.ProductDto
         public int Quantity { get; set; }
 
         public string Category { get; set; }
+
+        public string Image { get; set; }
     }
 }

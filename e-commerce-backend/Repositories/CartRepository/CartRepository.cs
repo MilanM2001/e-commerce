@@ -43,5 +43,14 @@ namespace e_commerce_backend.Repositories.CartRepository
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task ClearCart(int cartId)
+        {
+            var cartProducts = await _context.CartProducts
+                .Where(cp => cp.CartId == cartId)
+                .ToListAsync();
+            _context.CartProducts.RemoveRange(cartProducts);
+            await _context.SaveChangesAsync();
+        }
     }
 }

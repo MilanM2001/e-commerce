@@ -21,14 +21,18 @@ const getProductById = async (id: number) => {
     }
 }
 
-const createProduct = async (productRequest: ProductRequestDto) => {
+const createProduct = async (productRequest: FormData) => {
     try {
-        await api.post("/Product/create", productRequest)
+        await api.post("/Product/create", productRequest, {
+            headers: {
+                 'Content-Type': 'multipart/form-data',
+            }
+        });
     } catch (error) {
-        console.error("Create Product error:", error)
-        throw error
+        console.error("Create Product error:", error);
+        throw error;
     }
-}
+};
 
 const updateProduct = async (id: number, productUpdate: ProductUpdateDto) => {
     try {

@@ -48,7 +48,7 @@ namespace e_commerce_backend.Controllers
 
         [HttpPost("create")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> CreateProduct([FromBody] ProductRequestDto productDto)
+        public async Task<IActionResult> CreateProduct([FromForm] ProductRequestDto productDto)
         {
             try
             {
@@ -58,6 +58,7 @@ namespace e_commerce_backend.Controllers
             }
             catch (Exception ex)
             {
+                Console.WriteLine("PUKLO OVDEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
                 return BadRequest(ex.Message);
             }
         }

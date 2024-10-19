@@ -98,7 +98,7 @@ namespace e_commerce_backend.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CartId")
+                    b.Property<int>("CartId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
@@ -187,6 +187,10 @@ namespace e_commerce_backend.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
+                    b.Property<byte[]>("Image")
+                        .IsRequired()
+                        .HasColumnType("longblob");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -257,7 +261,9 @@ namespace e_commerce_backend.Migrations
                 {
                     b.HasOne("e_commerce_backend.Models.Cart", null)
                         .WithMany("CartProducts")
-                        .HasForeignKey("CartId");
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("e_commerce_backend.Models.Product", "Product")
                         .WithMany()

@@ -27,6 +27,8 @@ namespace e_commerce_backend.Models
         [StringLength(100)]
         public string Category { get; set; }
 
+        public byte[] Image { get; set; }
+
         public ICollection<Cart> Carts { get; set; } = new List<Cart>();
     }
 }

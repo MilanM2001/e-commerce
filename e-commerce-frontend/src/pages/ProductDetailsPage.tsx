@@ -81,7 +81,7 @@ const ProductDetailsPage = () => {
             <CardMedia
                 component="img"
                 height="300"
-                image="https://cdn.pixabay.com/photo/2013/07/13/09/46/basketball-155997_1280.png"
+                image={`data:image/png;base64,${product.image}`}
                 alt={product.name}
                 className="product-image"
             />

@@ -4,6 +4,7 @@ export type ProductRequestDto = {
     price: number
     quantity: number
     category: string
+    image: File | null
 }
 
 export type ProductUpdateDto = {
@@ -21,4 +22,5 @@ export type ProductResponseDto = {
     price: number
     quantity: number
     category: string
+    image: string
 }

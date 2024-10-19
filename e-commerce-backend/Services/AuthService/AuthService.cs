@@ -68,10 +68,8 @@ namespace e_commerce_backend.Services.AuthService
         {
             var email = "";
             if (_httpContextAccessor.HttpContext != null)
-            {
-                email = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                Console.WriteLine(email);
-            }
+                 email = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
 
             if (string.IsNullOrEmpty(email))
                 throw new SecurityTokenException("Token invalid");

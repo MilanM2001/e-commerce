@@ -26,6 +26,7 @@ namespace e_commerce_backend.Repositories.ProductRepository
         public async Task AddProduct(Product product)
         {
             await _context.Products.AddAsync(product);
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateProduct(Product product)

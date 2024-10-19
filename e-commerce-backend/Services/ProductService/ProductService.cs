@@ -22,8 +22,15 @@ namespace e_commerce_backend.Services.ProductService
 
             List<ProductResponseDto> productsDto = _mapper.Map<List<ProductResponseDto>>(products);
 
-            return productsDto;
+            for (int i = 0; i < productsDto.Count; i++)
+            {
+                if (products[i].Image != null)
+                {
+                    productsDto[i].Image = Convert.ToBase64String(products[i].Image);
+                }
+            }
 
+            return productsDto;
         }
 
         public async Task<ProductResponseDto> GetById(int id)
@@ -32,12 +39,30 @@ namespace e_commerce_backend.Services.ProductService
 
             ProductResponseDto productDto = _mapper.Map<ProductResponseDto>(product);
 
+            productDto.Image = Convert.ToBase64String(product.Image);
+
             return productDto;
         }
 
         public async Task CreateProduct(ProductRequestDto productDto)
         {
-            Product product = _mapper.Map<Product>(productDto);
+            var product = new Product
+            {
+                Name = productDto.Name,
+                Description = productDto.Description,
+                Price = productDto.Price,
+                Quantity = productDto.Quantity,
+                Category = productDto.Category,
+            };
+
+            if (productDto.ImageFile != null)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await productDto.ImageFile.CopyToAsync(memoryStream);
+                    product.Image = memoryStream.ToArray();
+                }
+            }
 
             await _productRepository.AddProduct(product);
             await _productRepository.SaveChanges();

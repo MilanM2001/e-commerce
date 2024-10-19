@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using e_commerce_backend.Models;
 using e_commerce_backend.Models.DTOs.OrderDto;
+using e_commerce_backend.Repositories.CartRepository;
 using e_commerce_backend.Repositories.OrderRepository;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
@@ -10,12 +11,14 @@ namespace e_commerce_backend.Services.OrderService
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository _orderRepository;
+        private readonly ICartRepository _cartRepository;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public OrderService(IOrderRepository orderRepository, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public OrderService(IOrderRepository orderRepository, ICartRepository cartRepository, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _orderRepository = orderRepository;
+            _cartRepository = cartRepository;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
         }
@@ -64,8 +67,8 @@ namespace e_commerce_backend.Services.OrderService
 
             await _orderRepository.AddOrder(order);
 
-           // TODO Delete products by cart id from cart after an order is placed
-           //
+            // TODO Delete products by cart id from cart after an order is placed
+            await _cartRepository.ClearCart(orderRequestDto.CartId);
         }
 
 

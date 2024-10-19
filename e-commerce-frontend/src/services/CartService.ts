@@ -1,5 +1,4 @@
 import { CartUpdateDto } from "../model/cart";
-import { CartProduct } from "../model/cartProduct";
 import api from "./api";
 
 const getMyCart = async () => {
@@ -7,7 +6,7 @@ const getMyCart = async () => {
         const response = await api.get('/Cart/getMyCart');
         return response.data
     } catch (error) {
-        console.error("Error in retrieving user:", error)
+        console.error("Error in retrieving cart:", error)
         throw error
     }
 };

@@ -8,5 +8,6 @@ namespace e_commerce_backend.Repositories.CartRepository
         Task AddCart(Cart cart);
         Task UpdateCart(Cart cart);
         Task DeleteCart(int cartId);
+        Task ClearCart(int cartId);
     }
 }

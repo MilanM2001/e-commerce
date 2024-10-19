@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import InputField from '../components/InputField';
 import { useCreateProduct } from '../hooks/ProductHooks';
 import '../css/ProductCreatePage.css';
+import { useState } from 'react';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required').min(2, 'Name should be at least 2 characters'),
@@ -15,17 +16,36 @@ const validationSchema = Yup.object().shape({
 
 const ProductCreatePage = () => {
     const { createProductHandler, loading, errorMessage } = useCreateProduct();
+    const [imageFile, setImageFile] = useState<File | null>(null);
 
     const handleSubmit = async (values: any) => {
-        const productData = {
-            name: values.name,
-            description: values.description,
-            price: values.price,
-            quantity: values.quantity,
-            category: values.category,
-        };
+        const formData = new FormData();
+        formData.append('name', values.name);
+        formData.append('description', values.description);
+        formData.append('price', values.price.toString());
+        formData.append('quantity', values.quantity.toString());
+        formData.append('category', values.category);
 
-        await createProductHandler(productData);
+        // Only append if an image file is selected
+        if (imageFile) {
+            formData.append('imageFile', imageFile);
+        } else {
+            console.error('No image file selected.'); // Log if no file is selected
+        }
+
+        // Check the contents of FormData
+        for (let [key, value] of formData.entries()) {
+            console.log(`${key}: ${value instanceof File ? value.name : value}`);
+        }
+
+        await createProductHandler(formData); // Send the form data
+    };
+
+    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files ? event.target.files[0] : null;
+        if (file) {
+            setImageFile(file);
+        }
     };
 
     return (
@@ -86,6 +106,11 @@ const ProductCreatePage = () => {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 error={touched.category && errors.category ? errors.category : ''}
+                            />
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
                             />
                             {errorMessage && <Typography color="error">{errorMessage}</Typography>}
                             <Button

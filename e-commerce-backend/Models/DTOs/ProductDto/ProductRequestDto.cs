@@ -23,5 +23,7 @@ namespace e_commerce_backend.Models.DTOs.ProductDto
         [Required]
         [StringLength(100)]
         public string Category { get; set; }
+
+        public IFormFile ImageFile { get; set; }
     }
 }

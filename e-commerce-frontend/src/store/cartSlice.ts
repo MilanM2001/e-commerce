@@ -1,23 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartProduct } from '../model/cartProduct'; // Import your CartProduct type
+import { CartProduct } from '../model/cartProduct';
 
 interface CartState {
-    products: CartProduct[]; // Array of CartProducts
+    products: CartProduct[];
     totalPrice: number;
+    cartId: number;
 }
 
 const initialState: CartState = {
-    products: [], // Ensure it's initialized as an empty array
-    totalPrice: 0, // Initialize total price to 0
+    products: [],
+    totalPrice: 0,
+    cartId: 0
 };
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        setCart(state, action: PayloadAction<{ products: CartProduct[], totalPrice: number }>) {
+        setCart(state, action: PayloadAction<{ products: CartProduct[], totalPrice: number, cartId: number }>) {
             state.products = action.payload.products;
             state.totalPrice = action.payload.totalPrice;
+            state.cartId = action.payload.cartId;
         },
         addToCart(state, action: PayloadAction<CartProduct>) {
             const existingProduct = state.products.find(

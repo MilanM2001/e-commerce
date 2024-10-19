@@ -7,7 +7,7 @@ import { setCart } from "../store/cartSlice";
 const useGetMyCart = () => {
     const [loading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    const dispatch = useDispatch(); // Redux dispatch
+    const dispatch = useDispatch(); 
 
     const getMyCartHandler = async () => {
         try {
@@ -15,11 +15,9 @@ const useGetMyCart = () => {
             const res = await getMyCart();
 
             if (res) {
-                // Extract the products and total price from the response
-                const { cartProducts, totalPrice } = res;
+                const { cartProducts, totalPrice, id } = res;
 
-                // Dispatch only the products
-                dispatch(setCart({ products: cartProducts, totalPrice })); // Pass products and total price to the action
+                dispatch(setCart({ products: cartProducts, totalPrice, cartId: id })); 
             }
 
             return res

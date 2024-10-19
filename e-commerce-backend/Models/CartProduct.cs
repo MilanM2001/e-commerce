@@ -12,6 +12,9 @@ namespace e_commerce_backend.Models
         public Product Product { get; set; }
 
         [Required]
+        public int CartId { get; set; } 
+
+        [Required]
         public int Quantity { get; set; }
     }
 }

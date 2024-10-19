@@ -5,7 +5,6 @@ using e_commerce_backend.Services.AuthService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
 
 namespace e_commerce_backend.Controllers
 {
@@ -60,7 +59,6 @@ namespace e_commerce_backend.Controllers
             try
             {
                 var newAccessToken = await _authService.RefreshAccessTokenAsync(refreshTokenDto.RefreshToken);
-                Console.WriteLine("REFRESH TOKEN ENDPOINT HIT");
                 return Ok(new { AccessToken = newAccessToken });
             }
             catch (SecurityTokenException ex)
