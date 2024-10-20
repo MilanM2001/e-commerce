@@ -1,11 +1,12 @@
-import { Typography, Card, CardContent, CardMedia, CircularProgress, Grid, TextField, Box } from '@mui/material';
-import { useGetAllProducts } from '../hooks/ProductHooks';
+import { Typography, Card, CardContent, CardMedia, CircularProgress, Grid, TextField, Box, Button } from '@mui/material';
+import { useGetAllProductsPageable } from '../hooks/ProductHooks';
 import '../css/HomePage.css';
 import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
-    const { products, loading, error } = useGetAllProducts();
+    const { products, loading, error, totalRecords, pageNumber, setPageNumber, pageSize } = useGetAllProductsPageable();
     const navigate = useNavigate();
+    const totalPages = Math.ceil(totalRecords / pageSize);
 
     if (loading) {
         return <CircularProgress />;
@@ -17,6 +18,10 @@ const HomePage = () => {
 
     const handleProductClick = (id: number) => {
         navigate(`/product/${id}`);
+    };
+
+    const handlePageChange = (newPageNumber: number) => {
+        setPageNumber(newPageNumber);
     };
 
     return (
@@ -38,7 +43,7 @@ const HomePage = () => {
                                 <CardMedia
                                     component="img"
                                     height="200"
-                                    image={`data:image/png;base64,${product.image}`} 
+                                    image={`data:image/png;base64,${product.image}`}
                                     alt={product.name}
                                     onClick={() => handleProductClick(product.id)}
                                     style={{ cursor: 'pointer' }}
@@ -60,6 +65,21 @@ const HomePage = () => {
                         </Grid>
                     ))}
                 </Grid>
+
+                {/* Pagination Controls */}
+                <Box marginTop={4} display="flex" justifyContent="center">
+                    {Array.from({ length: totalPages }, (_, index) => (
+                        <Button
+                            key={index + 1}
+                            variant={index + 1 === pageNumber ? "contained" : "outlined"}
+                            color="primary"
+                            onClick={() => handlePageChange(index + 1)}
+                            style={{ margin: '0 5px' }}
+                        >
+                            {index + 1}
+                        </Button>
+                    ))}
+                </Box>
             </Box>
         </div>
     );

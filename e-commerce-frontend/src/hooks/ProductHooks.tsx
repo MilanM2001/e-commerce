@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ProductResponseDto, ProductUpdateDto } from "../model/product"
-import { createProduct, getAllProducts, getProductById, updateProduct } from "../services/ProductService"
+import { createProduct, getAllProducts, getAllProductsPageable, getProductById, updateProduct } from "../services/ProductService"
 import { AppRoute } from "../routes/RoutesEnum"
 
 const useGetAllProducts = () => {
@@ -26,6 +26,34 @@ const useGetAllProducts = () => {
     }, [])
     return { products, loading, error }
 }
+
+const useGetAllProductsPageable = () => {
+    const [products, setProducts] = useState<ProductResponseDto[]>([]);
+    const [loading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [totalRecords, setTotalRecords] = useState(0);
+    const [pageNumber, setPageNumber] = useState(1);
+    const pageSize = 6;
+
+    useEffect(() => {
+        const getAllProductsHandler = async () => {
+            try {
+                setIsLoading(true);
+                const res = await getAllProductsPageable(pageNumber, pageSize);
+                setProducts(res.products);
+                setTotalRecords(res.totalRecords);
+            } catch (error: any) {
+                setError(error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        getAllProductsHandler();
+    }, [pageNumber]);
+
+    return { products, totalRecords, loading, error, pageNumber, setPageNumber, pageSize };
+};
+
 
 const useGetProductById = (id: number) => {
     const [product, setProduct] = useState<ProductResponseDto | null>(null);
@@ -103,4 +131,4 @@ const useUpdateProduct = () => {
     return { updateProductHandler, loading, error, errorMessage }
 }
 
-export { useGetAllProducts, useGetProductById, useCreateProduct, useUpdateProduct }
+export { useGetAllProducts, useGetAllProductsPageable, useGetProductById, useCreateProduct, useUpdateProduct }

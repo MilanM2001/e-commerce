@@ -1,4 +1,4 @@
-import { ProductRequestDto, ProductUpdateDto } from "../model/product"
+import { ProductUpdateDto } from "../model/product"
 import api from "./api"
 
 const getAllProducts = async () => {
@@ -10,6 +10,17 @@ const getAllProducts = async () => {
         throw error
     }
 }
+
+const getAllProductsPageable = async (pageNumber = 1, pageSize = 10) => {
+    try {
+        const response = await api.get(`/Product/allPageable?pageNumber=${pageNumber}&pageSize=${pageSize}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error in finding products:", error);
+        throw error;
+    }
+};
+
 
 const getProductById = async (id: number) => {
     try {
@@ -25,7 +36,7 @@ const createProduct = async (productRequest: FormData) => {
     try {
         await api.post("/Product/create", productRequest, {
             headers: {
-                 'Content-Type': 'multipart/form-data',
+                'Content-Type': 'multipart/form-data',
             }
         });
     } catch (error) {
@@ -43,4 +54,4 @@ const updateProduct = async (id: number, productUpdate: ProductUpdateDto) => {
     }
 }
 
-export { getAllProducts, getProductById, createProduct, updateProduct }
+export { getAllProducts, getAllProductsPageable, getProductById, createProduct, updateProduct }

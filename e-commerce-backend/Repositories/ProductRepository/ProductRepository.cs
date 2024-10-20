@@ -18,6 +18,17 @@ namespace e_commerce_backend.Repositories.ProductRepository
             return await _context.Products.ToListAsync();
         }
 
+        public async Task<(List<Product>, int)> GetAllPageable(int pageNumber, int pageSize)
+        {
+            var products = await _context.Products
+                                         .Skip((pageNumber - 1) * pageSize)
+                                         .Take(pageSize)
+                                         .ToListAsync();
+            var totalRecords = await _context.Products.CountAsync();
+
+            return (products, totalRecords);
+        }
+
         public async Task<Product> GetById(int id)
         {
             return await _context.Products.FirstOrDefaultAsync(p => p.Id == id);

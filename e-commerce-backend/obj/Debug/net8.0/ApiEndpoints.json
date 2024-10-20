@@ -153,6 +153,27 @@
   },
   {
     "ContainingType": "e_commerce_backend.Controllers.ProductController",
+    "Method": "GetAllPageable",
+    "RelativePath": "api/Product/allPageable",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "e_commerce_backend.Controllers.ProductController",
     "Method": "CreateProduct",
     "RelativePath": "api/Product/create",
     "HttpMethod": "POST",

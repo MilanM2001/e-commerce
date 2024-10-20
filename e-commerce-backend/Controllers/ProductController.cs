@@ -31,6 +31,27 @@ namespace e_commerce_backend.Controllers
             }
         }
 
+        [HttpGet("allPageable")]
+        public async Task<IActionResult> GetAllPageable([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+        {
+            try
+            {
+                var (products, totalRecords) = await _productService.GetAllPageable(pageNumber, pageSize);
+
+                var response = new
+                {
+                    TotalRecords = totalRecords,
+                    Products = products
+                };
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {

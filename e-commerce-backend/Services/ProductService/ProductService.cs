@@ -33,6 +33,23 @@ namespace e_commerce_backend.Services.ProductService
             return productsDto;
         }
 
+        public async Task<(List<ProductResponseDto>, int)> GetAllPageable(int pageNumber, int pageSize)
+        {
+            var (products, totalRecords) = await _productRepository.GetAllPageable(pageNumber, pageSize);
+
+            var productsDto = _mapper.Map<List<ProductResponseDto>>(products);
+
+            for (int i = 0; i < productsDto.Count; i++)
+            {
+                if (products[i].Image != null)
+                {
+                    productsDto[i].Image = Convert.ToBase64String(products[i].Image);
+                }
+            }
+
+            return (productsDto, totalRecords);
+        }
+
         public async Task<ProductResponseDto> GetById(int id)
         {
             Product product = await _productRepository.GetById(id); 
